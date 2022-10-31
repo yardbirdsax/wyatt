@@ -2,8 +2,8 @@
 
 ![](doc/img/gophermarshall_small.png)
 
-Wyatt is Go library that marshalls / un-marshalls GitHub Action context data into / from structs. It's named for
-the (in)famous U.S. Marshall [Wyatt
+Wyatt is Go library that marshals / unmarshals GitHub Action context data into / from structs. It's named for
+the (in)famous U.S. Marshal [Wyatt
 Earp](https://history.howstuffworks.com/historical-figures/wyatt-earp.htm).
 
 Wyatt makes it easy to populate Go variables with data provided by the GitHub
