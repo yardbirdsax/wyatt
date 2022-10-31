@@ -24,12 +24,12 @@ parsing struct tags, dealing with values, etc. Therefore, we take the following 
 1. Consumers of the library create structs that are decorated with the `json` struct tag, as
 documented by [the `encoding/json` package docs](https://pkg.go.dev/encoding/json#Marshal). The
 tag value should be the name of the input, with spaces replaced by `_`. Casing does not matter.
-2. Pass a pointer to the struct to the `UnMarshall` method, which in turn:
+2. Pass a pointer to the struct to the `Unmarshal` method, which in turn:
     1. Creates a JSON object of all the GitHub Action inputs and their values by parsing the environment
     variables injected by the Actions runtime. Simple types are converted to their JSON equivalent. For
     example, if an input as a value of "32", it will be converted to a floating point number; if an
     input has a value of "true", then it will be converted to a boolean.
-    2. Uses the native `json.UnMarshall` method to populate the struct.
+    2. Uses the native `json.Unmarshal` method to populate the struct.
 
 Here's a simple example:
 ```go
