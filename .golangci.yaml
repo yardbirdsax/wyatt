@@ -1,0 +1,12 @@
+linters:
+  enable-all: true
+  fast: false
+  disable:
+    - funlen
+    - gofumpt
+    - exhaustivestruct
+    - exhaustruct
+    - nlreturn
+    - paralleltest
+    - tagliatelle
+    - wrapcheck

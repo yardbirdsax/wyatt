@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - directory: /
+    open-pull-requests-limit: 5
+    package-ecosystem: gomod
+    rebase-strategy: auto
+    schedule:
+      timezone: America/New_York
+      interval: weekly
