@@ -63,20 +63,19 @@ type ActionConfig struct{
 
 The input to your Action might look something like this:
 ```yaml
-...
 - uses: someone/my-go-action
-	with:
-		foo: bar
-		fooers: |
-			[
-				"joe",
-				"jane"
-			]
-		bing: |
-			{
-				"foo": "foo-er",
-				"bar": "bar-er"
-			}
+  with:
+    foo: bar
+    fooers: |
+      [
+	"joe",
+	"jane"
+      ]
+    bing: |
+      {
+	"foo": "foo-er",
+	"bar": "bar-er"
+      }
 ```
 
 ## Roadmap
