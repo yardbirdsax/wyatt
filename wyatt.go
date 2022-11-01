@@ -15,13 +15,13 @@ import (
 )
 
 /*
-UnMarshall populates a tagged Go struct with input data by the GitHub Action's platform.
+Unmarshal populates a tagged Go struct with input data by the GitHub Action's platform.
 Tags should be in the form of the lowercased name of the input. For example, an input called
 `Hello_There` would need a tag of `json:"hello_there"`. JSON tags are used since the library
 converts the inputs to a JSON object, thereby leveraging the existing functionality present
 in the standard library's `encoding/json` package.
 */
-func UnMarshall(out interface{}) error {
+func Unmarshal(out interface{}) error {
 	var (
 		err error
 	)

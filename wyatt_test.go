@@ -10,11 +10,11 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestUnMarhshall(t *testing.T) {
+func TestUnmarshal(t *testing.T) {
 	t.Run("pointer not passed", func(t *testing.T) {
 		obj := struct{}{}
 
-		err := wyatt.UnMarshall(obj)
+		err := wyatt.Unmarshal(obj)
 
 		assert.Error(t, err)
 	})
@@ -44,7 +44,7 @@ func TestUnMarhshall(t *testing.T) {
 		}
 		actualOutput := simpleInputStruct{}
 
-		err = wyatt.UnMarshall(&actualOutput)
+		err = wyatt.Unmarshal(&actualOutput)
 		require.Nil(t, err)
 
 		assert.EqualValues(t, expectedOutput, actualOutput)
@@ -78,7 +78,7 @@ func TestUnMarhshall(t *testing.T) {
 		}
 		actualOutput := complexInputStruct{}
 
-		err = wyatt.UnMarshall(&actualOutput)
+		err = wyatt.Unmarshal(&actualOutput)
 		require.Nil(t, err)
 
 		assert.EqualValues(t, expectedOutuput, actualOutput)

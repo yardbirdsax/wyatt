@@ -2,8 +2,8 @@
 
 ![](doc/img/gophermarshall_small.png)
 
-Wyatt is Go library that marshalls / un-marshalls GitHub Action context data into / from structs. It's named for
-the (in)famous U.S. Marshall [Wyatt
+Wyatt is Go library that marshals / unmarshals GitHub Action context data into / from structs. It's named for
+the (in)famous U.S. Marshal [Wyatt
 Earp](https://history.howstuffworks.com/historical-figures/wyatt-earp.htm).
 
 Wyatt makes it easy to populate Go variables with data provided by the GitHub
@@ -24,16 +24,15 @@ parsing struct tags, dealing with values, etc. Therefore, we take the following 
 1. Consumers of the library create structs that are decorated with the `json` struct tag, as
 documented by [the `encoding/json` package docs](https://pkg.go.dev/encoding/json#Marshal). The
 tag value should be the name of the input, with spaces replaced by `_`. Casing does not matter.
-2. Pass a pointer to the struct to the `UnMarshall` method, which in turn:
-	1. Creates a JSON object of all the GitHub Action inputs and their values by parsing the environment
-	variables injected by the Actions runtime. Simple types are converted to their JSON equivalent. For
-	example, if an input as a value of "32", it will be converted to a floating point number; if an
-	input has a value of "true", then it will be converted to a boolean.
-	2. Uses the native `json.UnMarshall` method to populate the struct.
+2. Pass a pointer to the struct to the `Unmarshal` method, which in turn:
+    1. Creates a JSON object of all the GitHub Action inputs and their values by parsing the environment
+    variables injected by the Actions runtime. Simple types are converted to their JSON equivalent. For
+    example, if an input as a value of "32", it will be converted to a floating point number; if an
+    input has a value of "true", then it will be converted to a boolean.
+    2. Uses the native `json.Unmarshal` method to populate the struct.
 
 Here's a simple example:
 ```go
-
 var myStruct struct{
   // Input name: doSomething
   DoSomething bool `json:"dosomething"`
@@ -51,13 +50,13 @@ as the input. For example, say you have a struct like this:
 
 ```go
 type Bong struct {
-	Foo string `json:"foo"`
-	Bar int		 `json:"bar"`
+  Foo string `json:"foo"`
+  Bar int    `json:"bar"`
 }
 type ActionConfig struct{
-	Foo  	 string   `json:"foo"`
-	Fooers []string `json:"fooers"`
-	Bing   Bong     `json:"bing"`
+  Foo    string   `json:"foo"`
+  Fooers []string `json:"fooers"`
+  Bing   Bong     `json:"bing"`
 }
 ```
 
@@ -68,13 +67,13 @@ The input to your Action might look something like this:
     foo: bar
     fooers: |
       [
-	"joe",
-	"jane"
+        "joe",
+        "jane"
       ]
     bing: |
       {
-	"foo": "foo-er",
-	"bar": "bar-er"
+        "foo": "foo-er",
+        "bar": "bar-er"
       }
 ```
 
