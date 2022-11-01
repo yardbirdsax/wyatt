@@ -42,7 +42,7 @@ var myStruct struct{
   AnIntValue int `json:"anintvalue"`
 }{}
 
-err := wyatt.UnMarshal(&myStruct)
+err := wyatt.Unmarshal(&myStruct)
 ```
 
 You can also have more complex types, such as lists, maps, or structs, by passing valid JSON
