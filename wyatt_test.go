@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/actiongopher/wyatt"
+	"github.com/yardbirdsax/wyatt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

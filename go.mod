@@ -1,4 +1,4 @@
-module github.com/actiongopher/wyatt
+module github.com/yardbirdsax/wyatt
 
 go 1.19
 
