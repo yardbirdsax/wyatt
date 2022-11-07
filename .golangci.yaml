@@ -4,6 +4,7 @@ linters:
   disable:
     - funlen
     - gofumpt
+    - gci
     - exhaustivestruct
     - exhaustruct
     - nlreturn
