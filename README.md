@@ -1,6 +1,6 @@
 # wyatt
 
-![](doc/img/gophermarshall_small.png)
+![](doc/img/gophermarshal_small.png)
 
 Wyatt is Go library that marshals / unmarshals GitHub Action context data into / from structs. It's named for
 the (in)famous U.S. Marshal [Wyatt
