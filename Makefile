@@ -10,3 +10,10 @@ generate:
 
 test:
 	go test -count=1 -coverprofile=cover.out ./...
+
+lint:
+	docker run \
+		--rm \
+		--volume "$(shell pwd):/src" \
+		--workdir "/src" \
+		golangci/golangci-lint golangci-lint run ./...
