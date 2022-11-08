@@ -1,5 +1,5 @@
 /*
-Wyatt is Go library that marshalls / un-marshalls GitHub Action context data into / from structs. It's named for
+Package wyatt is Go library that marshals / unmarshals GitHub Action context data into / from structs. It's named for
 the (in)famous U.S. Marshall Wyatt Earp: https://history.howstuffworks.com/historical-figures/wyatt-earp.htm.
 
 See the public repository's README file for more examples.
@@ -15,7 +15,7 @@ import (
 )
 
 /*
-Unmarshal populates a tagged Go struct with input data by the GitHub Action's platform.
+Unmarshal populates a tagged Go struct with input data provided by the GitHub Actions platform.
 Tags should be in the form of the lowercased name of the input. For example, an input called
 `Hello_There` would need a tag of `json:"hello_there"`. JSON tags are used since the library
 converts the inputs to a JSON object, thereby leveraging the existing functionality present
@@ -28,13 +28,12 @@ func Unmarshal(out interface{}) error {
 
 	envJSONMap, err := createEnvironmentJSONMap()
 	if err != nil {
-		return fmt.Errorf("error generataing environment variable map: %w", err)
+		return fmt.Errorf("error generating environment variable map: %w", err)
 	}
 
 	err = json.Unmarshal(envJSONMap, out)
-
 	if err != nil {
-		return fmt.Errorf("error unmarshalling environment variable map to struct: %w", err)
+		return fmt.Errorf("error unmarshaling environment variable map to struct: %w", err)
 	}
 
 	return nil
