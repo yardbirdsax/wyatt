@@ -17,6 +17,9 @@ func TestUnmarshal(t *testing.T) {
 		err := wyatt.Unmarshal(obj)
 
 		assert.Error(t, err)
+
+		expectedMessage := "error unmarshaling environment variable map to struct: json: Unmarshal(non-pointer struct {})"
+		assert.Equal(t, expectedMessage, err.Error())
 	})
 
 	t.Run("simple input types", func(t *testing.T) {
@@ -82,6 +85,26 @@ func TestUnmarshal(t *testing.T) {
 		require.Nil(t, err)
 
 		assert.EqualValues(t, expectedOutuput, actualOutput)
+	})
+
+	t.Run("ignores environment variables not prefixed with 'INPUT_'", func(t *testing.T) {
+		type simpleInputStruct struct {
+			StringInput   string `json:"string"`
+			AnotherString string `json:"another_string"`
+		}
+
+		t.Setenv("INPUT_STRING", "a string")
+		t.Setenv("ANOTHER_STRING", "another string")
+
+		expectedOutput := simpleInputStruct{
+			StringInput: "a string",
+		}
+		actualOutput := simpleInputStruct{}
+
+		err := wyatt.Unmarshal(&actualOutput)
+		require.Nil(t, err)
+
+		assert.EqualValues(t, expectedOutput, actualOutput)
 	})
 }
 
